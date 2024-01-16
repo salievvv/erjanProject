@@ -1,8 +1,6 @@
-<html>
-<body>
-
-<h1>Hello World!</h1>
-<p>Welcome to my first Django project!</p>
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<h1>{{aboutpage.title}}</h1>
+<img src="{{aboutpage.img.url}}" width="300px" alt="">
+<p>{{aboutpage.desc}}</p>
+{% endblock content %}

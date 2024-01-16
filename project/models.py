@@ -11,18 +11,17 @@ class Category(models.Model):
 class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE,null=True)
     name = models.CharField(verbose_name='название', max_length=30)
-    img = models.ImageField(upload_to='product/',verbose_name='фотки')
-    desc = models.TextField(verbose_name='описание')
-    price = models.FloatField(verbose_name='цена')
+    img = models.ImageField(upload_to='product/',verbose_name='фотки', blank=True, null=True)
+    desc = models.TextField(verbose_name='описание', blank=True, null=True)
+    price = models.FloatField(verbose_name='цена') # doolar
 
     def __str__(self) -> str:
         return self.name
 
-class ProAbout(models.Model):
+class AboutPage(models.Model):
+    title = models.CharField(verbose_name='О компании', max_length=30)
+    img = models.ImageField(upload_to='about/',verbose_name='фотки')
+    desc = models.TextField(verbose_name='описание')
 
-    
-    def get_absolute_url(self):
-        return reverse('about', kwargs={'about'})
-
-
-
+    def __str__(self) -> str:
+        return self.title

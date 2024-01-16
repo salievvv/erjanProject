@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from .models import Product
-from .models import ProAbout
+from .models import Product, AboutPage
 
 def index(request):
     products = Product.objects.all()
@@ -8,4 +7,6 @@ def index(request):
     return render(request,'index.html',context)
 
 def about(request):
-    return render(request,'proabout/about.html')
+    aboutpage = AboutPage.objects.latest('id')
+    context = {'aboutpage':aboutpage}
+    return render(request,'about.html', context)
