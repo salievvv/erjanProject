@@ -25,3 +25,15 @@ class AboutPage(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
+class Kategorypage(models.Model):
+    marc = models.CharField(verbose_name='марка авто', max_length=30,blank=True, null=True)
+    img = models.ImageField(upload_to='kategory/',verbose_name='изображение',blank=True, null=True )
+    modelavto = models.TextField(verbose_name='модель',blank=True, null=True)
+    godvypuska = models.FloatField(verbose_name='год выпуска',blank=True, null=True)
+    dvigatel = models.FloatField(verbose_name='объем двигаетля',blank=True, null=True)
+    price = models.FloatField(verbose_name='цена в $',blank=True, null=True)
+
+
+    def __str__(self) -> str:
+        return self.marc
