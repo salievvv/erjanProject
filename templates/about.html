@@ -1,6 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>{{aboutpage.title}}</h1>
-<img src="{{aboutpage.img.url}}" width="300px" alt="">
-<p>{{aboutpage.desc}}</p>
+<div class="container">
+    <h1 class="text-secondary mb-4">{{aboutpage.title}}</h1>
+    <div class="row">
+    <div class="col-9">
+        <p>{{aboutpage.desc|safe}}</p>
+    </div>
+    <div class="col-3">
+        <img src="{{aboutpage.img.url}}" width="300px" alt="">
+    </div>
+</div>
+</div>
+<!-- Modal gallery -->
+<section class="">
+    <!-- Section: Images -->
+    <section class="">
+      <div class="row">
+        {% for gal in galleries %}
+        <div class="col-lg-3 col-md-12 mb-3 mb-lg-0">
+          <div
+            class="bg-image hover-overlay ripple shadow-1-strong rounded"
+            data-ripple-color="light"
+          >
+          <img src="{{gal.img.url}}" width="200px" class="w-100" alt=""> 
+            <a href="#!" data-mdb-toggle="modal" data-mdb-target="#exampleModal1">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    <!-- Section: Images -->
+  </section>
+  <!-- Modal gallery -->
+
 {% endblock content %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Product, AboutPage, Kategorypage
+from .models import Product, AboutPage, Gallery
 
 def index(request):
     products = Product.objects.all()
@@ -8,11 +8,9 @@ def index(request):
 
 def about(request):
     aboutpage = AboutPage.objects.latest('id')
-    context = {'aboutpage':aboutpage}
+    galleries = Gallery.objects.all()
+    context = {
+        'aboutpage':aboutpage,
+        'galleries':galleries,
+    }
     return render(request,'about.html', context)
-
-
-def kategory(request):
-    kategorypage = Kategorypage.objects.latest('id')
-    context = {'kategorypage':kategorypage}
-    return render(request,'kategory.html', context)
