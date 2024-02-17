@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django import forms
 from django.utils.safestring import mark_safe
-from .models import Product, Marka, AboutPage, Gallery
+from .models import Product, Marka, AboutPage, Gallery, Year
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
@@ -27,6 +27,23 @@ class AboutPageAdmin(admin.ModelAdmin):
     form = AboutAdminForm
     inlines = [GalleryInline,]
 
-admin.site.register(Product)
-admin.site.register(Marka)
+
+class MarkaAdmin(admin.ModelAdmin):
+    list_display = ['name', 'url']
+    prepopulated_fields = {'url': ('name',)} 
+
+
+class YearAdmin(admin.ModelAdmin):
+    list_display = ['year', 'url']
+    prepopulated_fields = {'url': ('year',)} 
+
+
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ['name', 'marka', 'year', 'price']
+    prepopulated_fields = {'url': ('name',)} 
+    save_on_top = True
+
+admin.site.register(Product, ProductAdmin)
+admin.site.register(Marka,MarkaAdmin)
+admin.site.register(Year,YearAdmin)
 admin.site.register(AboutPage, AboutPageAdmin)
