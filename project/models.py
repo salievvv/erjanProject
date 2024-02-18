@@ -50,7 +50,7 @@ class Product(models.Model):
         verbose_name = 'авто'
 
 class AboutPage(models.Model):
-    title = models.CharField(verbose_name='О компании', max_length=30)
+    title = models.CharField(verbose_name='О компании', max_length=130)
     img = models.ImageField(upload_to='about/',verbose_name='фотки')
     desc = RichTextField()
 
@@ -72,3 +72,16 @@ class Gallery(models.Model):
     class Meta:
         verbose_name_plural = 'Галерея'
         verbose_name = 'галерея'
+
+
+class Otzyvy(models.Model):
+    title = models.CharField(verbose_name='Ваше имя', max_length=300)
+    desc = models.TextField(verbose_name='написать отзыв', blank=True, null=True)
+
+
+    def __str__(self) -> str:
+        return self.title
+
+    class Meta:
+        verbose_name_plural = 'Отзыв на страницу'
+        verbose_name = 'написать отзыв'

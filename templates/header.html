@@ -10,12 +10,13 @@
             <li><a href="{% url 'about' %}" class="nav-link px-2 text-white">О нас</a></li>
           <li><a href="" class="nav-link px-2 text-white">Марка </a></li>
           <li><a href="" class="nav-link px-2 text-white">Год </a></li> 
-          <li><a href="#" class="nav-link px-2 text-white">Отзывы</a></li>
+          <li><a href="{% url 'otzyvy' %}"class="nav-link px-2 text-white">Отзывы</a></li>
           <li><a href="http://127.0.0.1:8000/admin" class="nav-link px-2 text-white">Admin</a></li>
         </ul>
 
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="search" class="form-control form-control-dark" placeholder="Поиск машины..." aria-label="Поиск">
+        <form action="{% url 'index' %}" method="get">
+          <input type="search" name="search" placeholder="Search" aria-label="Search" >
+          <button type="submit">найти</button>
         </form>
 
         <div class="text-end">

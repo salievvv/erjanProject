@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django import forms
 from django.utils.safestring import mark_safe
-from .models import Product, Marka, AboutPage, Gallery, Year
+from .models import Product, Marka, AboutPage, Gallery, Year, Otzyvy
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
@@ -9,6 +9,12 @@ class AboutAdminForm(forms.ModelForm):
     desc = forms.CharField(widget=CKEditorUploadingWidget())
     class Meta:
         model = AboutPage
+        fields = '__all__'
+
+class OtzyvyAdminForm(forms.ModelForm):
+     desc = forms.CharField(widget=CKEditorUploadingWidget())
+     class Meta:
+        model = Otzyvy
         fields = '__all__'
 
 class GalleryInline(admin.TabularInline):
@@ -26,6 +32,12 @@ class AboutPageAdmin(admin.ModelAdmin):
     list_display = ("title", "desc",)
     form = AboutAdminForm
     inlines = [GalleryInline,]
+
+class OtzyvyAdmin(admin.ModelAdmin): 
+    list_display = ("title", "desc",)
+    form = OtzyvyAdminForm
+    inlines = [GalleryInline,]
+
 
 
 class MarkaAdmin(admin.ModelAdmin):
@@ -47,3 +59,4 @@ admin.site.register(Product, ProductAdmin)
 admin.site.register(Marka,MarkaAdmin)
 admin.site.register(Year,YearAdmin)
 admin.site.register(AboutPage, AboutPageAdmin)
+admin.site.register(Otzyvy)

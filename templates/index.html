@@ -4,9 +4,9 @@
         {% for product in products %} 
         <div class="col-4">
 
+          
           <div class="card shadow-sm">
-            <img src="{{product.img.url}}" width="200px" alt="">
-
+            <img src="{{products.img.url}}" width="200px" alt="">>
             <div class="card-body">
               <p class="card-text">{{product.name}}</p>
               <p class="card-text">{{product.desc|truncatewords:10}}</p>
